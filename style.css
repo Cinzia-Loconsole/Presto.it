@@ -1,0 +1,27 @@
+body{
+    font-family: 'Delius', cursive;
+    color: whitesmoke;
+    /* position: relative; */
+}
+/* 
+h1{
+    font-family: ;
+} */
+
+.logo{
+    width: 60px;
+}
+
+header{
+    background: url('./media/bg-img.png');
+    background-position:top;
+   /* position: absolute; */
+   height: 100vh;
+   background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.section2{
+    border-top: solid 10px rgba(13, 13, 13, 0.939);
+    background-color: #327F7B;
+}
