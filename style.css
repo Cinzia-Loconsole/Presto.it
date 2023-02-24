@@ -4,9 +4,27 @@ body{
     /* position: relative; */
 }
 
-.head-txt {
-    margin-top: 200px;
+@font-face {
+    font-family:pick;
+    src: url(./PickandRoll.ttf);
+  } 
+
+.h1{
+    font-family:pick ;
+    font: size 300px;
     text-shadow: 2px 2px 4px black;
+}
+
+.sottotitolo{
+    font-family:pick ;
+    font: size 100px;
+    text-shadow: 3px 3px 5px black;
+}
+
+
+.head-txt {
+    margin-top: 250px;
+    
 }
 
 .fa-microphone-lines{
@@ -63,6 +81,11 @@ header{
 
 .nav-link{
     color:whitesmoke;
+}
+
+.nav-link:hover{
+    color:rgba(184, 220, 222, 0.979);
+    border-bottom: 2px solid yellow;
 }
 
 /* SWIPER */
