@@ -1,7 +1,8 @@
 body{
     font-family: 'Delius', cursive;
     color: whitesmoke;
-    /* position: relative; */
+    background-color: #348889e7;
+    
 }
 
 @font-face {
@@ -88,9 +89,19 @@ header{
     border-bottom: 2px solid yellow;
 }
 
+
+
 /* SWIPER */
 
 .swiper {
     width: 600px;
     height: 300px;
   }
+
+  /* ANNUNCI */
+
+.m-filterSection{
+
+    margin-top: 200px;
+    
+}
