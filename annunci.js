@@ -121,6 +121,8 @@ fetch("./annunci.json").then( (response)=> response.json() ).then( (data)=>{
     let ricerca = document.querySelector('#ricerca');
 
 
+    // SETTA CATEGORIE SENZA RIPETERLE
+
     function setCategories (){
 
         let categories = data.map ((el) => el.category);
@@ -158,11 +160,12 @@ fetch("./annunci.json").then( (response)=> response.json() ).then( (data)=>{
 
         })
             
-    
-        
     }
     
     setCategories();
+
+
+    // MOSTRA CARD TUTTE LE CATEGORIE
 
     function mostraCard(array){
 
@@ -191,39 +194,51 @@ fetch("./annunci.json").then( (response)=> response.json() ).then( (data)=>{
        annunci.appendChild(div)
 
     })
-
      }
 
+     mostraCard(data);
 
-    function categorieFiltrate(categoria) {
+
+    //  FILTRA PER CATEGORIA
+
+    function categorieFiltrate(array) {
+
+        // TRASFORMO UNA NODE LIST/ ARRAY LIKE IN UN ARRAY CON IL METODO .FROM()
+        // A PARTIRE DALLA NODE-LIST formCheckInputs TRASFORMALO IN UN ARRAY
+
+        let arrayFromNodelist = Array.from(formCheckInputs);
+        let button = arrayFromNodelist.find( (button) => button.checked)
+        let categoria = button.id;
 
         if(categoria != 'All'){
 
-        let categorieFiltrate = data.filter((el)=> categoria == el.category)
+        let filtered = array.filter((el)=> categoria == el.category)
 
-        mostraCard(categorieFiltrate);
+        return filtered;
 
     } else {
 
-        mostraCard(data);
+        return data;
 
+    }
     }
 
 
-    }
-
+    // EVENTO RADIO BUTTON FILTRO PER CATEGORIA
 
     let formCheckInputs = document.querySelectorAll('.form-check-input');
 
     formCheckInputs.forEach( (el)=>{
 
-    el.addEventListener ('click' , ()=>{
+        el.addEventListener ('click' , ()=>{
 
-        categorieFiltrate(el.id);
+            globalFilter();
 
+        })
     })
 
-})
+
+// FUNZIONE RANGE INCREMENTO NUMERI
 
 function maxNumber(){
 
@@ -244,40 +259,61 @@ maxNumber();
 
 
 
+// FILTRO PER PREZZO
 
-function filterByPrice (prezzo){
+function filterByPrice (array){
 
-   
-    let filtratePerPrezzo = data.filter((annuncio)=> (Number(annuncio.price) <= Number(prezzo)));
+
+    let filtratePerPrezzo =  array.filter((annuncio)=> (Number(annuncio.price) <= Number(priceInput.value)));
     
-    mostraCard(filtratePerPrezzo);
+    return filtratePerPrezzo;
 
 }
+
+// EVENTO INPUT PREZZO
 
 priceInput.addEventListener ('input' , ()=>{
-
-    filterByPrice(priceInput.value);
-
+ 
     numeroIncremento.innerHTML = priceInput.value ;
+    globalFilter();
 
 })
 
 
-function filterByWord (parola){
+// FILTRO PER PAROLA
 
-    let filtratePerParola = data.filter((annuncio)=> annuncio.name.toLowerCase().includes(parola.toLowerCase()));
+function filterByWord (array){
 
-    mostraCard(filtratePerParola);
+    let nome = ricerca.value;
+
+    let filtratePerParola = array.filter((annuncio)=> annuncio.name.toLowerCase().includes(nome.toLowerCase()));
+
+    return filtratePerParola;
 }
 
+
+// EVENTO FILTRO PER PAROLA
 ricerca.addEventListener('input' , ()=>{
 
-  filterByWord(ricerca.value);
+    // incrementNumber.innerHTML = priceInput.value;
+
+    globalFilter();
 
 })
 
 
+// FUNZIONE GLOBALE
 
+function globalFilter(){
+
+    let categorieFiltrate = categorieFiltrate(data);
+    let filterByPrice = filterByPrice(categorieFiltrate);
+    let filterByWord = filterByWord(filterByPrice);
+
+    mostraCard(filterByWord);
+}
+
+globalFilter();
     
 })
 

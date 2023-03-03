@@ -1,8 +1,55 @@
+:root{
+
+    --primary: rgba(0, 148, 253, 0.54);
+    --secondary: #f1a0e8;
+    --accent: rgb(255, 253, 23) ;
+    --white: rgb(240, 255, 242);
+    --black: #040017;
+}
+
 body{
     font-family: 'Delius', cursive;
     color: whitesmoke;
-    background-color: #348889e7;
+    background-color: #334f9ce9;
     
+}
+
+.text-secondario{
+    color: var(--secondary);
+}
+
+.text-accento{
+    color: var(--accent);
+}
+
+.text-whiteCus{
+    color: var(--white);
+}
+
+.text-blackCus{
+    color: var(--black);
+}
+
+/* background */
+
+.bg-primario{
+    background-color: var(--primary);
+}
+
+.bg-secondario{
+    background-color: var(--secondary);
+}
+
+.bg-accento{
+    background-color: var(--accent);
+}
+
+.bg-whiteCus{
+    background-color: var(--white);
+}
+
+.bg-blackCus{
+    background-color: var(--black);
 }
 
 @font-face {
@@ -56,21 +103,13 @@ header{
     background-attachment: fixed;
 }
 
-/* .header{
-    position
-} */
 
 .section2{
     border-top: solid 10px rgba(13, 13, 13, 0.939);
-    background-color: #348889e7;
-    
+    /* background-color: #4a7d3d; */
     
 }
 
-
-/* .col-custom{
-    transition: 0.4s;
-} */
 
 #nav1{
     transition: 0.2s;
@@ -89,19 +128,55 @@ header{
     border-bottom: 2px solid yellow;
 }
 
+.shipper{
 
+    width: 400px;
+
+}
 
 /* SWIPER */
 
 .swiper {
-    width: 600px;
     height: 300px;
   }
 
   /* ANNUNCI */
 
 .m-filterSection{
-
     margin-top: 200px;
-    
+}
+
+.card-feedback{
+    height: 200px;
+    width: 300px;
+    border: 2px solid yellow;
+    border-radius: 20px;
+    background-color: whitesmoke;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* MOUSE ENTER */
+
+.col-custom{
+    color: rgba(13, 13, 13, 0.939);
+    border: 3px solid black;
+    border-radius: 20px;
+}
+
+.col-custom:hover{
+    background-color: rgba(245, 245, 245, 0.816);
+    color: rgba(144, 109, 109, 0.939);
+    border:3px solid black;
+    transform: scale(1.2);
+}
+
+/* FOOTER */
+
+.h-footer-cus{
+    min-height: 50px;
 }

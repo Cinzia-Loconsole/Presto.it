@@ -77,6 +77,8 @@ settaIntervallo(2000, terzoSpan);
 
 // EVENTO SCROLL LOGO NAV
 
+
+// MOUSE ENTER
 window.addEventListener('scroll', ()=>{
 
 
@@ -109,4 +111,28 @@ window.addEventListener('scroll', ()=>{
    
 
 })
+
+let questions = document.querySelectorAll('.fa-circle-question');
+let columns = document.querySelectorAll('.col-custom')
+
+columns.forEach((colonna, i)=>{
+
+    colonna.addEventListener('mouseenter', ()=>{
+
+        questions[i].classList.remove('text-accento');
+
+        questions[i].classList.add('.text-primary');
+
+    })
+
+    colonna.addEventListener('mouseleave', ()=>{
+
+        questions[i].classList.add('text-secondario');
+        questions[i].classList.remove('.text-primary');
+
+    })
+
+})
+
+
 
