@@ -147,11 +147,12 @@ fetch("./annunci.json").then( (response)=> response.json() ).then( (data)=>{
 
             div.innerHTML = `
             
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="${categoria}">
-            <label class="form-check-label" for="${categoria}">
-            ${categoria}
-            </label>
-            </ul>
+            
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="${categoria}">
+                    <label class="form-check-label" for="${categoria}">
+                    ${categoria}
+                    </label>
+        
                             
 
                             `
@@ -201,7 +202,7 @@ fetch("./annunci.json").then( (response)=> response.json() ).then( (data)=>{
 
     //  FILTRA PER CATEGORIA
 
-    function categorieFiltrate(array) {
+    function byCategoryFilter(array) {
 
         // TRASFORMO UNA NODE LIST/ ARRAY LIKE IN UN ARRAY CON IL METODO .FROM()
         // A PARTIRE DALLA NODE-LIST formCheckInputs TRASFORMALO IN UN ARRAY
@@ -217,7 +218,7 @@ fetch("./annunci.json").then( (response)=> response.json() ).then( (data)=>{
         return filtered;
 
     } else {
-
+        // console.log(button.checked);
         return data;
 
     }
@@ -261,7 +262,7 @@ maxNumber();
 
 // FILTRO PER PREZZO
 
-function filterByPrice (array){
+function byPriceFilter (array){
 
 
     let filtratePerPrezzo =  array.filter((annuncio)=> (Number(annuncio.price) <= Number(priceInput.value)));
@@ -282,7 +283,7 @@ priceInput.addEventListener ('input' , ()=>{
 
 // FILTRO PER PAROLA
 
-function filterByWord (array){
+function byWordFilter (array){
 
     let nome = ricerca.value;
 
@@ -306,14 +307,13 @@ ricerca.addEventListener('input' , ()=>{
 
 function globalFilter(){
 
-    let categorieFiltrate = categorieFiltrate(data);
-    let filterByPrice = filterByPrice(categorieFiltrate);
-    let filterByWord = filterByWord(filterByPrice);
+    let categorieFiltrate = byCategoryFilter(data);
+    let filterByPrice = byPriceFilter(categorieFiltrate);
+    let filterByWord = byWordFilter(filterByPrice);
 
     mostraCard(filterByWord);
 }
 
-globalFilter();
     
 })
 
